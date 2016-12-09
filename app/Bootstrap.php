@@ -12,11 +12,34 @@ class Bootstrap{
 
 		$urls = explode('/', $url);
 		// print_r($urls);
-		// echo $url;
 
-		$file = '\\app\\Controller\\Controller'.$urls[1];
-		$controller = new $file;
-		$controller->{$urls[2]}();
+        // echo "$file";
+        if(empty($urls[1])){
+            $file = '\\app\\Controller\\ControllerHome';
+			$controller = new $file;
+			$controller->index();
+        } else{
+	        $file = 'app/Controller/Controller'.$urls[1].'.php';
+	        if(file_exists($file)){
+	            $a = "\\app\\Controller\\Controller".$urls[1];
+	            $controller = new $a;
+	            if(isset($urls[1])){
+	                if(isset($urls[2])){
+	                    $controller->{$urls[2]}($urls[2]);
+	                }else{
+	                    // $controller->{$urls[1]}();
+		                $controller->index();
+	                    // echo "tidak ada method";
+	                }
+	            }else{
+	            	// ke default controller
+		            $controller = new \app\Controller\ControllerHome();
+	            }
+	        }else{
+	            $controller = new \app\Controller\ControllerError();
+	            return false;
+	        }
+        }
 	}
 
 	function db(){
@@ -31,6 +54,7 @@ class Bootstrap{
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
         ]);
+
 		// Make this Capsule instance available globally via static methods
         $capsule->setAsGlobal();
 		// Setup the Eloquent ORM
