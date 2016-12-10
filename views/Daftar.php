@@ -1,3 +1,8 @@
+<?php 
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +35,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-6">
-					<a href="dashboard"><input type="submit" class="hvr-wobble-horizontal" name="loginBtn" value="Masuk"></a>
+					<a href="<?=base_url?>index.php/"><input type="submit" class="hvr-wobble-horizontal" name="loginBtn" value="Masuk"></a>
 				</div>
 			</div>
 		</form>
@@ -55,7 +60,7 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="login"><span class="lnr lnr-calendar-full"></span> Buat Event</a></li>
+							<li><a href="<?=base_url?>index.php/home/login"><span class="lnr lnr-calendar-full"></span> Buat Event</a></li>
 							<li class="open-login"><a href="#"><span class="lnr lnr-lock"></span> Masuk</a></li>
 						</ul>
 					</div><!-- /.navbar-collapse -->
@@ -105,7 +110,20 @@
 				<div class="form-wrapper col-sm-4 col-sm-offset-1">
 					<div class="form-daftar">
 						<h4 class="bold">Daftar - <small class="bold">Lengkapi formulir dibawah ini</small></h4>
-						<form method="post" action="" autocomplete="off">
+						
+						<?php
+							if ($_SESSION['pesan'] !== "") {
+						?>
+							<div class="alert alert-success alert-dismissable fade in">
+							    <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+							    <strong><?=$_SESSION['pesan']?></strong>
+							</div>
+
+						<?php 
+							$_SESSION['pesan'] = "";
+							}
+						?>
+						<form method="post" action="prosesDaftar" autocomplete="off">
 							<input type="text" name="nama" placeholder="Nama kamu..." required="">
 							<input type="email" name="email" placeholder="Email kamu..." required="">
 							<input type="text" name="telp" placeholder="No Telp..." required="">
@@ -114,7 +132,7 @@
 							<input type="submit" value="Daftar">
 						</form>
 					</div>
-					<small><span class="bold">Sudah punya akun?</span> <a href="login.html"><span class="bolder">Masuk</span></small></a>
+					<small><span class="bold">Sudah punya akun?</span> <a href="<?=base_url?>index.php/home/login"><span class="bolder">Masuk</span></small></a>
 				</div>
 			</div>
 		</div>

@@ -55,8 +55,8 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href=""><span class="lnr lnr-calendar-full"></span> Buat Event</a></li>
-							<li><a href="daftar"><span class="lnr lnr-plus-circle"></span> Daftar</a></li>
+							<li><a href="<?=base_url?>index.php/home/login"><span class="lnr lnr-calendar-full"></span> Buat Event</a></li>
+							<li><a href="<?=base_url?>index.php/home/daftar"><span class="lnr lnr-plus-circle"></span> Daftar</a></li>
 						</ul>
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->

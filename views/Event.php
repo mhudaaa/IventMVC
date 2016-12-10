@@ -1,7 +1,12 @@
+<?php 
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ivent - Bikin Event Ga Pake Ribet</title>
+	<title>Daftar Event</title>
 
 	<!-- Meta tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -12,7 +17,7 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url?>assets/css/linearicons.css">
 	<link rel="stylesheet" type="text/css" href="<?=base_url?>assets/css/hover-min.css">
 </head>
-<body class="homepage">
+<body id="daftar-event" class="daftar">
 
 	<!-- Login form -->
 	<div class="login-form">
@@ -20,22 +25,21 @@
 			<div class="arrow-up"></div>
 		</div>
 		<a href=""><small class="bold">Lupa password?</small></a>
-		<form method="post" action="dashboard/index.html">
+		<form>
 			<div class="row">
 				<div class="col-sm-12">
-						<input type="email" name="email" placeholder="Email..." required="">
-						<input type="password" name="password" placeholder="Kata sandi..." required="">
+						<input type="email" name="email" placeholder="Email...">
+						<input type="password" name="password" placeholder="Kata sandi...">
 					</form>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-6">
-					<a href="dashboard"><input type="submit" class="hvr-wobble-horizontal" name="loginBtn" value="Masuk"></a>
+					<a href="<?=base_url?>index.php/"><input type="submit" class="hvr-wobble-horizontal" name="loginBtn" value="Masuk"></a>
 				</div>
 			</div>
 		</form>
 	</div>
-	<!-- End login -->
 
 	<!-- Begin Header -->
 	<section id="header">
@@ -51,121 +55,48 @@
 							<span class="icon-bar"></span> <span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#"><img src="<?=base_url?>assets/img/logo.png"></a>
+						<a class="navbar-brand" href="../home"><img src="<?=base_url?>assets/img/logo.png"></a>
 					</div><!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="<?=base_url?>index.php/home/login"><span class="lnr lnr-calendar-full"></span> Buat Event</a></li>
 							<li class="open-login"><a href="#"><span class="lnr lnr-lock"></span> Masuk</a></li>
-							<li><a href="<?=base_url?>index.php/home/daftar"><span class="lnr lnr-plus-circle"></span> Daftar</a></li>
 						</ul>
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->
-			</nav>
 
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="form-daftar">
-						<h4>Daftarkan Eventmu</h4>
-						<form method="post" action="" autocomplete="off">
-							<input type="text" name="nama" placeholder="Nama kamu..." required="">
-							<input type="email" name="email" placeholder="Email kamu..." required="">
-							<input type="submit" value="Daftar">
-						</form>
-					</div>
-					<small><span class="bold">Sudah punya akun?</span> <a href="daftar.html"><span class="bolder">Daftar</span></small></a>
-				</div>
-				<div class="col-sm-8 text-right">
-					<img class="img-header" src="<?=base_url?>assets/img/people.png">
-				</div>
-			</div>
+				<div class="menu-arrow"></div>
+			</nav>
 		</div>
 	</section>
 	<!-- End Header -->
 
-	<!-- Cari event -->
-	<section id="cari">
-		<!-- <div class="polygon">'</div> -->
-		<div id="wrapper">
-			<form class="cari" method="post">
-				<div class="row">
-					<div class="col-sm-4">
-						<h3>Cari event berdasarkan...</h3>
-					</div>
-					<div class="col-sm-2">
-						<select>
-							<option>Waktu pelaksanaan</option>
-							<option>Januari</option>
-							<option>Februari</option>
-							<option>Maret</option>
-							<option>April</option>
-							<option>Mei</option>
-							<option>Juni</option>
-						</select>
-					</div>
-					<div class="col-sm-2">
-						<select class="pull-right">
-							<option>Lokasi</option>
-							<option>Surabaya</option>
-							<option>Jember</option>
-							<option>Malang</option>
-							<option>Jakarta</option>
-							<option>Bandung</option>
-							<option>Bekasi</option>
-					</select>
-					</div>
-					<div class="col-sm-2">
-						<select>
-							<option>Harga Tiket</option>
-							<option>Gratis</option>
-							<option>Rp 0 - Rp 50.000</option>
-							<option>Rp 50.000 - Rp 100.000</option>
-							<option>> Rp 100.000</option>
-						</select>
-					</div>
-					<div class="col-sm-2 pull-right text-uppercase bold">
-						<input type="submit" name="" class="btn" value="Cari">
-					</div>
-				</form>
-			</div>
+	<section>
+		<div id="wrapper-top">
+			<img src="<?=base_url?>assets/img/menu-arrow.png">
 		</div>
 	</section>
-	<!-- End cari event -->
-
-	<!-- Event Baru -->
-	<section id="event-baru">
+	
+	<!-- Begin Content -->
+	<sections>
 		<div id="wrapper">
 			<div class="row">
-				<div class="col-sm-6">
-					<h3>Event terbaru</h3>
-				</div>
-				<div class="col-sm-6">
-					<a href="">
-						<div class="event-selengkapnya text-center text-uppercase pull-right semi-bolder">
-							<small>Selengkapnya</small>
-							<div class="event-line">'</div>
-						</div>
-					</a>
-				</div>
-			</div>
-			<div class="row">
-				<?php foreach($events as $event) {?>
-				<div class="col-sm-3">
+				<div class="col-sm-3 col">
 					<div class="event-list hvr-float-shadow">
-						<img class="event-img" src="<?=base_url?>assets/img/<?=$event->poster?>.jpg">
-						<h5 class="text-red"><?=$event->nama_event?></h5>
+						<img class="event-img" src="<?=base_url?>assets/img/poster1.jpg">
+						<h5 class="text-red">Lorem ipsum dolor sit</h5>
 						<div class="row">
 							<div class="col-sm-6">
-								<span class="event-info"><?=$event->tgl_event?></span>
+								<span class="event-info">30-6-2015</span>
 							</div>
 							<div class="col-sm-6">
-								<span class="event-info text-green text-uppercase pull-right">Rp <?=$event->htm?></span>
+								<span class="event-info text-green text-uppercase pull-right">Gratis</span>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-6">
-								<a href="<?=base_url?>home/detailEvent/<?=$event->id_event?>"><button class="btn btn-red btn-small text-uppercase">detail</button></a>
+								<a href="detail-event.html"><button class="btn btn-red btn-small text-uppercase">detail</button></a>
 							</div>
 							<div class="col-sm-6 text-right bold plus">
 								<a href="daftar.html"><h3><i class="hvr-buzz-out lnr lnr-plus-circle"></i></h3></a>
@@ -173,8 +104,7 @@
 						</div>
 					</div>
 				</div>
-				<?php } ?>
-				<!-- <div class="col col-sm-3">
+				<div class="col col-sm-3">
 					<div class="event-list hvr-float-shadow">
 						<img class="event-img" src="<?=base_url?>assets/img/poster2.jpg">
 						<h5 class="text-red">Summer Sounds Festival</h5>
@@ -239,12 +169,13 @@
 							</div>
 						</div>
 					</div>
-				</div> -->
+				</div>
 			</div>
 		</div>
 	</section>
+	<!-- End Content -->
 
-	<!-- Begin footer -->
+	<!-- Begin Footer -->
 	<section id="footer">
 		<div id="wrapper">
 			<div class="row">
@@ -265,10 +196,11 @@
 			</div>
 		</div>
 	</section>
-	<!-- End footer -->
+	<!-- End Footer -->
 
 	<!-- Javascript -->
 	<script type="text/javascript" src="<?=base_url?>assets/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="<?=base_url?>assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?=base_url?>assets/js/script.js"></script>
 
 </body>

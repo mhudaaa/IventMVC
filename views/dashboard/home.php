@@ -49,28 +49,34 @@
                         </div>
 
                         <div class="item-wrapper">
+
+                            <?php 
+                                $noa = 1;
+                                $nob = 1;
+                                foreach($events as $event){ 
+                            ?>
                             <!-- Item -->
                             <div class="row">
                                 <div class="col m10">
                                     <div class="item white grey-text text-lighten-1">
                                         <div class="hvr-forward event-photo">
-                                            <img src="<?=base_url?>assets/img/poster2.jpg">
+                                            <img src="<?=base_url?>assets/img/<?=$event->poster?>.jpg">
                                         </div>
                                         <div class="action">
-                                            <a class="dropdown-button" href="" data-activates='dropdown-action'><img src="<?=base_url?>assets/dashboard/img/action.png"></a>
+                                            <a class="dropdown-button" href="" data-activates='dropdown-action-<?=$noa++?>'><img src="<?=base_url?>assets/dashboard/img/action.png"></a>
                                         </div>
                                         <div class="row">
                                             <div class="col m10 offset-m2 event-title">
                                                 <div class="col m12">
-                                                    <h6 class="truncate semi-bold">Summer Sound Festival</h6>
+                                                    <h6 class="truncate semi-bold"><?=$event->nama_event?></h6>
                                                 </div>
                                                 
                                                 <div class="uppercase lato spacing-1 semi-bold">
                                                     <div class="col m5">
-                                                        <small><i class="lnr lnr-calendar-full"></i> 30 Oktober 2016</small>
+                                                        <small><i class="lnr lnr-calendar-full"></i> <?=$event->tgl_event?></small>
                                                     </div>
                                                     <div class="col m5">
-                                                        <small><i class="lnr lnr-clock"></i> 07:00 - 13:00</small>
+                                                        <small><i class="lnr lnr-clock"></i> <?=date('H:i', strtotime($event->waktu_mulai));?> - <?=date('H:i', strtotime($event->waktu_selesai));?></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -79,22 +85,23 @@
                                             <img src="<?=base_url?>assets/dashboard/img/bullet1.png">
                                         </div>
                                     </div>
-                                    <ul id='dropdown-action' class='dropdown-content z-depth-0'>
-                                        <li><a href="detailEvent"><i class="lnr lnr-eye"></i> Rincian</a></li>
-                                        <li><a href="peserta.html"><i class="lnr lnr-users"></i> Peserta</a></li>
+                                    <ul id='dropdown-action-<?=$nob++?>' class='dropdown-content z-depth-0'>
+                                        <li><a href="<?=base_url?>dashboard/detailEvent"><i class="lnr lnr-eye"></i> Rincian</a></li>
+                                        <li><a href="<?=base_url?>dashboard/peserta"><i class="lnr lnr-users"></i> Peserta</a></li>
                                         <li><a href="#share"><i class="lnr lnr-thumbs-up"></i> Bagikan</a></li>
                                     </ul>
                                 </div>
                                 <div class="col m2 center-align grey-text text-lighten-1 ticket">
-                                    <h4 class="unisans text-red">82</h4>
-                                    <span class="unisans">/ 100</span>
+                                    <h4 class="unisans text-red">0</h4>
+                                    <span class="unisans">/ <?=$event->jml_peserta?></span>
                                     <small class="spacing-1"><p>Peserta</p></small>
                                 </div>
                             </div>
                             <!-- End item -->
+                            <?php } ?>
 
                             <!-- Item -->
-                            <div class="row">
+                           <!--  <div class="row">
                                 <div class="col m10">
                                     <div class="item white grey-text text-lighten-1">
                                         <div class="hvr-forward event-photo">
@@ -124,8 +131,8 @@
                                         </div>
                                     </div>
                                     <ul id='dropdown-action-2' class='dropdown-content z-depth-0'>
-                                        <li><a href="detailEvent"><i class="lnr lnr-eye"></i> Rincian</a></li>
-                                        <li><a href="#"><i class="lnr lnr-users"></i> Peserta</a></li>
+                                        <li><a href="<?=base_url?>dashboard/detailEvent"><i class="lnr lnr-eye"></i> Rincian</a></li>
+                                        <li><a href="<?=base_url?>dashboard/peserta"><i class="lnr lnr-users"></i> Peserta</a></li>
                                         <li><a href="#"><i class="lnr lnr-thumbs-up"></i> Bagikan</a></li>
                                     </ul>
                                 </div>
@@ -134,7 +141,7 @@
                                     <span class="unisans">/ 200</span>
                                     <small class="spacing-1"><p>Peserta</p></small>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- End item -->
                         </div>
                         

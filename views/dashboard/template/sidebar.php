@@ -8,15 +8,17 @@
                                 </div>
                             </div>
                             <div class="col m7 no-padding akun-info">
-                                <h6 class="bold">M. Huda</h6>
-                                <span class="semi-bold">Frozch Artwork</span>
+                                <?php foreach ($users as $user) { ?>
+                                <h6 class="bold"><?=$user->nama?></h6>
+                                <span class="semi-bold"><?=$user->organisasi?></span>
+                                <?php } ?>
                             </div>
                         </div>
 
                         <!-- Ubah profil -->
                         <div class="row">
                             <div class="col s12">
-                                <a href=""><div class="hvr-outline-out btn-profile center-align uppercase semi-bold">Ubah profil</div></a>
+                                <a href="<?=base_url?>dashboard/profil"><div class="hvr-outline-out btn-profile center-align uppercase semi-bold">Ubah profil</div></a>
                             </div>
                         </div>
 
@@ -24,8 +26,8 @@
                         <div class="row">
                             <div class="col s12">
                                 <ul class="menu">
-                                    <a href="index"><li class="hvr-forward"><i class="lnr lnr-home"></i> Beranda</li></a>
-                                    <a href="event"><li class="hvr-forward"><i class="lnr lnr-calendar-full"></i> Event</li></a>
+                                    <a href="<?=base_url?>dashboard"><li class="hvr-forward"><i class="lnr lnr-home"></i> Beranda</li></a>
+                                    <a href="<?=base_url?>dashboard/event"><li class="hvr-forward"><i class="lnr lnr-calendar-full"></i> Event</li></a>
                                 </ul>
                             </div>
                         </div>

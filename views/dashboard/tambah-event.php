@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="isi grey-text text-lighten-1 semi-bold">
-                            <form>
+                            <form method="post" action="<?=base_url?>dashboard/prosesTambahEvent">
                                 <div class="row">
                                     <div class="col s2">
                                         <small class="uppercase semi-bolder spacing-1 grey-text text-darken-5">Detail</small>
@@ -38,37 +38,47 @@
                                 <div class="row">
                                     <div class="col m2">Nama event</div>
                                     <div class="col m6">
-                                        <input type="text" name="nama" placeholder="Masukkan nama event">
+                                        <input type="text" name="nama_event" placeholder="Masukkan nama event" required="">
                                     </div>
                                     <div class="col m3">Jumlah peserta</div>
                                     <div class="col m1">
-                                        <input type="text" name="number">
+                                        <input type="text" name="jml_peserta" required="">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col m2">Tanggal</div>
+                                    <div class="col m4">
+                                        <input type="date" name="tgl_event" required="">
+                                    </div>
+                                    <div class="col m2">Tempat</div>
+                                    <div class="col m4">
+                                        <input type="text" name="tempat" placeholder="Masukkan lokasi event" required="">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col m2">Waktu mulai</div>
                                     <div class="col m4">
-                                        <input type="date" name="waktu-mulai">
+                                        <input type="time" name="waktu_mulai" required="">
                                     </div>
                                     <div class="col m2">Selesai</div>
                                     <div class="col m4">
-                                        <input type="date" name="waktu-selesai">
+                                        <input type="time" name="waktu_selesai" required="">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col m2">Deskripsi</div>
                                     <div class="col m10">
-                                        <textarea name="deskripsi" maxlength="500" placeholder="Deskripsi maksimal 500 karakter"></textarea>
+                                        <textarea name="deskripsi" maxlength="500" placeholder="Deskripsi maksimal 500 karakter" required=""></textarea>
                                     </div>
                                 </div>
                                  <div class="row">
-                                    <div class="col m2">Lokasi event</div>
+                                    <div class="col m2">Kota</div>
                                     <div class="col m6">
-                                        <input type="text" name="lokasi" placeholder="Masukkan lokasi lengkap event">
+                                        <input type="text" name="kota" placeholder="Masukkan kota event" required="">
                                     </div>
                                     <div class="col m1">HTM</div>
                                     <div class="col m3">
-                                        <input type="text" name="number">
+                                        <input type="number" name="htm" required="">
                                     </div>
                                 </div>
 
@@ -83,23 +93,25 @@
                                 <div class="row">
                                     <div class="col m2">No Telp</div>
                                     <div class="col m4">
-                                        <input type="text" name="telp" placeholder="Masukkan no. telepon">
+                                        <input type="text" name="telp" placeholder="Masukkan no. telepon" required="">
                                     </div>
                                     <div class="col m2">Website</div>
                                     <div class="col m4">
-                                        <input type="text" name="website" placeholder="Masukkan alamat website">
+                                        <input type="text" name="website" placeholder="Masukkan alamat website" required="">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col m2">Email</div>
                                     <div class="col m4">
-                                        <input type="email" name="email" placeholder="Masukkan email">
+                                        <input type="email" name="email" placeholder="Masukkan email" required="">
+                                        <input type="hidden" name="event_organizer" value="1">
+                                        <input type="hidden" name="poster" value="sample">
                                     </div>
                                 </div>
 
 
                                 <!-- Poster -->
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col s2">
                                         <small class="uppercase semi-bolder spacing-1 grey-text text-darken-5">Poster</small>
                                     </div>
@@ -118,12 +130,9 @@
                                             <li>Dimensi gambar maksimum : <b>800 x 1000 piksel</b></li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div> -->
                                 <hr><br>
                                 <div class="row">
-                                    <div class="col m3">
-                                        <input type="submit" class="btn z-depth-0 red lighten-2 white-text" name="" value="Batal">
-                                    </div>
                                     <div class="col m3">
                                         <input type="submit" class="btn green lighten-2 white-text z-depth-0" name="" value="Buat event">
                                     </div>

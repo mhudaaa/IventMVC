@@ -192,16 +192,19 @@ button{
 	color: transparent;
 }
 
+#daftar-event{
+	padding-top: 0!important;
+}
 /*Event baru*/
-#event-baru{
+#event-baru, #daftar-event{
 	padding: 35px 0;
 	background: #f1f1f1 url('../img/bg-event.png');
 	color: #999;
 }
-#event-baru h3{
+#event-baru h3, #daftar-event h3{
 	margin-top: 5px;
 }
-#event-baru .event-selengkapnya{
+#event-baru .event-selengkapnya, #daftar-event .event-selengkapnya{
 	border-radius: 50px;
 	width: 180px;
 	letter-spacing: 1px;
@@ -214,7 +217,7 @@ button{
 	-webkit-transition: 0.3s background-color, color ease-in-out;
 	-o-transition: 0.3s background-color, color ease-in-out;
 }
-#event-baru .event-selengkapnya:hover{
+#event-baru .event-selengkapnya:hover, #daftar-event .event-selengkapnya:hover{
 	color: #f0f0f0;
 	background-color: #e06a5e;
 	cursor: pointer;
@@ -223,7 +226,7 @@ button{
 	-webkit-transition: 0.3s background-color, color ease-in-out;
 	-o-transition: 0.3s background-color, color ease-in-out;
 }
-#event-baru .event-list{
+#event-baru .event-list, #daftar-event .event-list{
 	background-color: #fff;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -232,16 +235,16 @@ button{
 	margin-top: 15px;
 	position: relative;
 }
-#event-baru .event-list .event-img{
+#event-baru .event-list .event-img, #daftar-event .event-list .event-img{
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 }
-#event-baru .event-list h5{
+#event-baru .event-list h5, #daftar-event .event-list h5{
 	letter-spacing: 0.5px;
 	font-size: 14.5px;
 }
-#event-baru .event-list .event-info{
+#event-baru .event-list .event-info, #daftar-event .event-list .event-info{
 	font-family: 'Lato';
 	font-size: 12px;
 	color: #bbb;
@@ -623,6 +626,10 @@ body.daftar{
 	background-color: #fff;
 	border-radius: 5px;
 	box-shadow: 0 0 30px rgba(0,0,0,.1);
+}
+.close, a.close{
+	font-size: 16px!important;
+	color: #000!important;
 }
 
 /*Placeholder*/

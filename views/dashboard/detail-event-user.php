@@ -11,7 +11,7 @@
         <div id="board">
             <div class="row flexbox">
 
-               <?php include('template/sidebar.php') ?>
+              <?php include('template/sidebar.php') ?>
 
                 <!-- Content -->
                 <div class="col col-content s12 m8 l8 content">
@@ -20,13 +20,13 @@
                         <!-- Title -->
                         <div class="row">
                             <div class="col m12">
-                                <h5 class="title semi-bolder text-red">Summer Sound Festival</h5>
+                                <h5 class="title semi-bolder text-red">Seminar Internet Marketing 2016</h5>
                             </div>
                         </div>
 
                         <div class="isi">
                             <div class="action">
-                                <a class="dropdown-button" href="" data-activates='dropdown-action'><img src="<?=base_url?>assets/dashboard/img/action.png"></a>
+                                <a class="dropdown-button" href="#" data-activates='dropdown-action'><img src="<?=base_url?>assets/dashboard/img/action.png"></a>
                             </div>
                             <div class="row">
                                 <div class="col s5">
@@ -53,8 +53,7 @@
                                 </div>
                             </div>
                             <ul id='dropdown-action' class='dropdown-content z-depth-0'>
-                                <li><a href="#"><i class="lnr lnr-pencil"></i> Ubah</a></li>
-                                <li><a href="#"><i class="lnr lnr-trash"></i> Hapus</a></li>
+                                <li><a href="#"><i class="lnr lnr-thumbs-up"></i> Bagikan</a></li>
                             </ul>
 
                             <div class="sm-divider"></div>
@@ -74,7 +73,7 @@
                                     </div>
                                     <div class="row lihat-peserta">
                                         <div class="col s10">
-                                            <a href="<?=base_url?>dashboard/peserta"><button class="hvr-shrink btn-border btn-block">Lihat peserta</button></a>
+                                            <a href="peserta.html"><button class="hvr-shrink btn-border btn-block">Download tiket</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -123,4 +122,4 @@
             </div>
         </div>
 
-        <?php include('template/footer-2.php') ?>
+        <?php include('template/footer-2.php') ?>“

@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="col m2">
                                     <br>
-                                    <a href="detail"><button class="btn-border btn-small btn-block">Rincian</button></a><br>
+                                    <a href="<?=base_url?>dashboard/detailEventPeserta"><button class="btn-border btn-small btn-block">Rincian</button></a><br>
                                     <a href=""><button class="btn-border btn-small btn-block">Tiket</button></a>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
                                     </div>
                                 </div>
                                  <div class="col m2 center-align grey-text text-lighten-1 ticket">
-                                    <a href="detail"><button class="btn-border btn-small btn-block">Rincian</button></a><br>
+                                    <a href="<?=base_url?>dashboard/detailEventPeserta"><button class="btn-border btn-small btn-block">Rincian</button></a><br>
                                     <a href=""><button class="btn-border btn-small btn-block">Tiket</button></a>
                                 </div>
                             </div>

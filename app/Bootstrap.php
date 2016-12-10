@@ -24,7 +24,9 @@ class Bootstrap{
 	            $a = "\\app\\Controller\\Controller".$urls[1];
 	            $controller = new $a;
 	            if(isset($urls[1])){
-	                if(isset($urls[2])){
+	                if(isset($urls[3])){
+	                    $controller->{$urls[2]}($urls[3]);
+	                }if(isset($urls[2])){
 	                    $controller->{$urls[2]}($urls[2]);
 	                }else{
 	                    // $controller->{$urls[1]}();
