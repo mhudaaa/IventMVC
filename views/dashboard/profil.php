@@ -31,6 +31,16 @@
                         </div>
 
                         <br>
+                        <?php
+                            if (isset($_SESSION['pesan'])) {
+                        ?>
+                            <div class="alert alert-success">
+                                <?=$_SESSION['pesan']?>
+                            </div>
+                        <?php 
+                            unset($_SESSION['pesan']);
+                            }
+                        ?>
 
                         <div class="row">
                             <div class="col s3">
@@ -38,7 +48,7 @@
                                     <img class="photo" src="<?=base_url?>assets/dashboard/img/panda.png">
                                 </div>
                             </div>
-                            <?php foreach ($users as $user) { ?>
+                            
                             <div class="col s6">
                                 <table class="profile-info">
                                     <tr>
@@ -73,7 +83,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <?php } ?>
+                            
                         </div>
                         <br>
                         <div class="row">
@@ -120,7 +130,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <br><br>
                         <div class="row">
                             <div class="col s4">
@@ -216,5 +225,4 @@
                 </div>
             </div>
         </div>
-
        <?php include('template/footer.php') ?>

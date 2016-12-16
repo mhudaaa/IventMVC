@@ -503,3 +503,18 @@ hr.title{
 	background-color: #fff!important;
 	transition: background 0.3s ease-in-out
 }
+
+
+.alert{
+	width: 100%;
+	padding: 10px 20px;
+	border-radius: 3px;
+	margin-bottom: 40px;
+}
+.alert.alert-success{
+	background-color: rgba(46, 204, 113, .7);
+	border: 1px solid rgba(46, 204, 113, .9);
+	color: #fff;
+	font-size: 13px;
+	letter-spacing: .2px;
+}

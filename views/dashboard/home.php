@@ -1,5 +1,4 @@
 <?php include('template/header.php') ?>
-
     </head>
 
     <body>

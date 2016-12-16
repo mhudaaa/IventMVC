@@ -17,6 +17,8 @@
                       complete: function() {} // Callback for Modal close
                     }
                 );
+
+                $('.alert').delay(3200).fadeOut(300);
               });
         </script>
     </body>

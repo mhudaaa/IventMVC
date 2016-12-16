@@ -8,10 +8,10 @@
                                 </div>
                             </div>
                             <div class="col m7 no-padding akun-info">
-                                <?php foreach ($users as $user) { ?>
+                                
                                 <h6 class="bold"><?=$user->nama?></h6>
                                 <span class="semi-bold"><?=$user->organisasi?></span>
-                                <?php } ?>
+                                
                             </div>
                         </div>
 

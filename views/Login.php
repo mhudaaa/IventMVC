@@ -1,3 +1,6 @@
+<?php 
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,7 +109,18 @@
 					<br><br><br>
 					<div id="lgn-form" class="form-daftar">
 						<h4 class="bold">Login - <small class="bold">Masukkan email dan password</small></h4>
-						<form method="post" action="" autocomplete="off">
+						<?php
+							if (isset($_SESSION['pesan'])) {
+						?>
+							<div class="alert alert-danger alert-dismissable fade in">
+							    <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
+							    <strong><?=$_SESSION['pesan']?></strong>
+							</div>
+						<?php 
+							unset($_SESSION['pesan']);
+							}
+						?>
+						<form enctype="multipart/form-data" method="post" action="<?=base_url?>Auth/login">
 							<input type="email" name="email" placeholder="Email kamu..." required="">
 							<input type="password" name="password" placeholder="Password..." required="">
 							<input type="submit" value="Masuk">

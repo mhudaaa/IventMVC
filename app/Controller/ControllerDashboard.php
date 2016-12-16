@@ -8,67 +8,81 @@ use app\Model\Event;
 
 class ControllerDashboard{
 
+
 	public function __construct(){
+		session_start();
+		if (!isset($_SESSION['email']) && !isset($_SESSION['id'])){
+			header('Location: '.base_url);
+		}
 	}
 
 	function index(){
-		$user = User::coba()->get();
+		$id = $_SESSION['id'];
+		$user = User::findOrFail($id);
 		$event = Event::orderBy('created_at', 'desc')->get();
 		$data = [
-			'users' => $user,
+			'user' => $user,
 			'events' => $event
 		];
 		View::render('dashboard/home', $data);
 	}
 	
 	function event(){
-		$user = User::coba()->get();
+		$id = $_SESSION['id'];
+		$user = User::findOrFail($id);
 		$data = [
-			'users' => $user
+			'user' => $user
 		];
 		View::render('dashboard/event', $data);
 	}
 
 	function tambahEvent(){
-		$user = User::coba()->get();
+		$id = $_SESSION['id'];
+		$user = User::findOrFail($id);
 		$data = [
-			'users' => $user
+			'user' => $user
 		];
 		View::render('dashboard/tambah-event', $data);
+		
 	}
 
 	function detailEventUser(){
-		$user = User::coba()->get();
+		$id = $_SESSION['id'];
+		$user = User::findOrFail($id);
 		$data = [
-			'users' => $user
+			'user' => $user
 		];
 		View::render('dashboard/detail-event-user', $data);
 	}
 
 	function peserta(){
-		$user = User::coba()->get();
+		$id = $_SESSION['id'];
+		$user = User::findOrFail($id);
 		$data = [
-			'users' => $user
+			'user' => $user
 		];
 		View::render('dashboard/peserta', $data);
 	}
 
 	function profil(){
-		$user = User::coba()->get();
+		$id = $_SESSION['id'];
+		$user = User::findOrFail($id);
 		$jmlEvent = Event::count();
 		$data = [
-			'users' => $user,
+			'user' => $user,
 			'jmlEvent' => $jmlEvent
 		];
 		View::render('dashboard/profil', $data);
 	}
 
 	function ubahProfil(){
-		$user = User::coba()->get();
+		$id = $_SESSION['id'];
+		$user = User::findOrFail($id);
 		$data = [
-			'users' => $user
+			'user' => $user
 		];
 		View::render('dashboard/ubah-profil', $data);
+		
 	}
 
 	function prosesUbahProfil($id_user){
@@ -77,8 +91,11 @@ class ControllerDashboard{
 		$user->email = $_POST['email'];
 		$user->telp = $_POST['telp'];
 		$user->organisasi = $_POST['organisasi'];
-        $user->update();
+        if($user->update()){
+        	$_SESSION['pesan'] = "Profil berhasil diubah.";
+        }
         header('Location: '.base_url.'dashboard/profil');
+	   
 	}
 
 	function prosesTambahEvent(){
@@ -101,6 +118,5 @@ class ControllerDashboard{
 		// print_r($input);
     	Event::create($input);
         header('Location: '.base_url.'dashboard');
-
 	}
 }

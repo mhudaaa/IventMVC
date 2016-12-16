@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="isi grey-text text-lighten-1 semi-bold">
-                            <?php foreach ($users as $user) { ?>
+                            
                             <form method="post" action="<?=base_url?>dashboard/prosesUbahProfil/<?=$user->id_user?>">
                                 <div class="row">
                                     <div class="col s2">
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <?php } ?>
+                            
                         </div>
 
                     </div>

@@ -20,17 +20,16 @@
 			<div class="arrow-up"></div>
 		</div>
 		<a href=""><small class="bold">Lupa password?</small></a>
-		<form method="post" action="dashboard/index.html">
+		<form method="post" action="<?=base_url?>auth/login">
 			<div class="row">
 				<div class="col-sm-12">
 						<input type="email" name="email" placeholder="Email..." required="">
 						<input type="password" name="password" placeholder="Kata sandi..." required="">
-					</form>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-6">
-					<a href="dashboard"><input type="submit" class="hvr-wobble-horizontal" name="loginBtn" value="Masuk"></a>
+					<input type="submit" name="loginBtn" value="Masuk">
 				</div>
 			</div>
 		</form>

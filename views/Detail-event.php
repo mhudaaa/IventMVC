@@ -58,7 +58,7 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="daftar.html"><span class="lnr lnr-calendar-full"></span> Buat Event</a></li>
 							<li class="open-login"><a href="#"><span class="lnr lnr-lock"></span> Masuk</a></li>
-							<li><a href="daftar.html"><span class="lnr lnr-plus-circle"></span> Daftar</a></li>
+							<li><a href="<?=base_url?>home/daftar"><span class="lnr lnr-plus-circle"></span> Daftar</a></li>
 						</ul>
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->
@@ -97,8 +97,8 @@
 					<!-- Event Info -->
 					<div class="event-info semi-bolder lato text-red text-uppercase">
 						<div class="row">
-							<div class="col-sm-4">
-								<small><span class="lnr lnr-calendar-full"></span> <?=$detailEvent->tgl_event?></small>
+							<div class="col-sm-3">
+								<small><span class="lnr lnr-calendar-full"></span> <?=date('d M Y', strtotime($detailEvent->tgl_event));?></small>
 							</div>
 							<div class="col-sm-3">
 								<small><span class="lnr lnr-clock"></span> <?=date('H:i', strtotime($detailEvent->waktu_mulai));?> - <?=date('H:i', strtotime($detailEvent->waktu_selesai));?></small>

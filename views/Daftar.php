@@ -112,23 +112,22 @@ session_start();
 						<h4 class="bold">Daftar - <small class="bold">Lengkapi formulir dibawah ini</small></h4>
 						
 						<?php
-							if ($_SESSION['pesan'] !== "") {
+							if (isset($_SESSION['pesan'])) {
 						?>
-							<div class="alert alert-success alert-dismissable fade in">
+							<div class="alert alert-<?=$_SESSION['type']?> alert-dismissable fade in">
 							    <a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
 							    <strong><?=$_SESSION['pesan']?></strong>
 							</div>
-
 						<?php 
-							$_SESSION['pesan'] = "";
+							unset($_SESSION['pesan']);
 							}
 						?>
 						<form method="post" action="prosesDaftar" autocomplete="off">
-							<input type="text" name="nama" placeholder="Nama kamu..." required="">
-							<input type="email" name="email" placeholder="Email kamu..." required="">
-							<input type="text" name="telp" placeholder="No Telp..." required="">
-							<input type="password" name="password" placeholder="Password..." required="">
-							<input type="password" name="re-password" placeholder="Ulangi password..." required="">
+							<input type="text" name="nama" placeholder="Nama kamu..." required="" maxlength="12">
+							<input type="email" name="email" placeholder="Email kamu..." required="" maxlength="50">
+							<input type="text" name="telp" placeholder="No Telp..." required="" maxlength="12">
+							<input type="password" name="password" placeholder="Password..." required="" minlength="6" maxlength="15">
+							<input type="password" name="repassword" placeholder="Ulangi password..." required="" minlength="6" maxlength="15">
 							<input type="submit" value="Daftar">
 						</form>
 					</div>
