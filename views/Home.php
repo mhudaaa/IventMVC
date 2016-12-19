@@ -177,7 +177,7 @@
 				<?php foreach($events as $event) {?>
 				<div class="col-sm-3">
 					<div class="event-list hvr-float-shadow">
-						<img class="event-img" src="<?=base_url?>assets/img/<?=$event->poster?>.jpg">
+						<img class="event-img" src="<?=base_url?>upload/<?=$event->poster?>">
 						<h5 class="text-red"><?=$event->nama_event?></h5>
 						<div class="row">
 							<div class="col-sm-6">

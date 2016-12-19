@@ -101,7 +101,7 @@
 					    	</div>
 
 						    <div class="item">
-						    	<h2 class="bolder text-grey">Lorem ipsum</h2>
+						    	<h2 class="bolder text-grey">Event</h2>
 								<br>
 								<p class="bold">Solusi buat kamu yang <span class="text-red">gak mau ribet</span> urusin sistem pendaftaran member di eventmu. Mengatur event jadi lebih mudah, tinggal buat akun, masukkan detail event, dan <span class="text-red">atur member eventmu sendiri</span>.</p>
 						    </div>

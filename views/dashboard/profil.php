@@ -31,16 +31,11 @@
                         </div>
 
                         <br>
-                        <?php
-                            if (isset($_SESSION['pesan'])) {
-                        ?>
+                        <?php if (isset($_SESSION['pesan'])) {?>
                             <div class="alert alert-success">
                                 <?=$_SESSION['pesan']?>
                             </div>
-                        <?php 
-                            unset($_SESSION['pesan']);
-                            }
-                        ?>
+                        <?php unset($_SESSION['pesan']); } ?>
 
                         <div class="row">
                             <div class="col s3">

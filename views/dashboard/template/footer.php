@@ -21,7 +21,7 @@
 
                 $('#table-peserta').DataTable();
 
-                $('.alert').delay(3200).fadeOut(300);
+                $('.alert').delay(5000).fadeOut(300);
               });
         </script>
     </body>

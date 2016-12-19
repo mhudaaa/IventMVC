@@ -43,10 +43,10 @@
                                 <div class="col m10">
                                     <div class="item white grey-text text-lighten-1">
                                         <div class="hvr-forward event-photo">
-                                            <img src="<?=base_url?>assets/img/<?=$event->event->poster?>.jpg">
+                                            <img src="<?=base_url?>upload/<?=$event->event->poster?>">
                                         </div>
                                         <div class="action">
-                                            <a class="" href="#share" data-activates=''><i class="lnr lnr-thumbs-up"></i></a>
+                                            <!-- <a class="" href="#share" data-activates=''><i class="lnr lnr-thumbs-up"></i></a> -->
                                         </div>
                                         <div class="row">
                                             <div class="col m10 offset-m2 event-title">
@@ -80,43 +80,6 @@
                             <?php
                                 }
                             ?>
-                            <!-- Item -->
-                           <!--  <div class="row">
-                                <div class="col m10">
-                                    <div class="item white grey-text text-lighten-1">
-                                        <div class="hvr-forward event-photo">
-                                            <img src="<?=base_url?>assets/img/poster3.jpg">
-                                        </div>
-                                        <div class="action">
-                                            <a class="" href="#share"><i class="lnr lnr-thumbs-up"></i></a>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col m10 offset-m2 event-title">
-                                                <div class="col m12">
-                                                    <h6 class="truncate semi-bold">Lorem ipsum dolor sit</h6>
-                                                </div>
-                                                
-                                                <div class="uppercase lato spacing-1 semi-bold">
-                                                    <div class="col m5">
-                                                        <small><i class="lnr lnr-calendar-full"></i> 30 Oktober 2016</small>
-                                                    </div>
-                                                    <div class="col m5">
-                                                        <small><i class="lnr lnr-clock"></i> 07:00 - 13:00</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="badge">
-                                            <img src="<?=base_url?>assets/dashboard/img/bullet2.png">
-                                        </div>
-                                    </div>
-                                </div>
-                                 <div class="col m2 center-align grey-text text-lighten-1 ticket">
-                                    <a href="<?=base_url?>dashboard/detailEventPeserta"><button class="btn-border btn-small btn-block">Rincian</button></a><br>
-                                    <a href=""><button class="btn-border btn-small btn-block">Tiket</button></a>
-                                </div>
-                            </div> -->
-                            <!-- End item -->
                         </div>
                         
                     </div>

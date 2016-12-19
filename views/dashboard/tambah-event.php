@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="isi grey-text text-lighten-1 semi-bold">
-                            <form method="post" action="<?=base_url?>dashboard/prosesTambahEvent">
+                            <form method="post" action="<?=base_url?>dashboard/prosesTambahEvent" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col s2">
                                         <small class="uppercase semi-bolder spacing-1 grey-text text-darken-5">Detail</small>
@@ -111,7 +111,7 @@
 
 
                                 <!-- Poster -->
-                                <!-- <div class="row">
+                               <!--  <div class="row">
                                     <div class="col s2">
                                         <small class="uppercase semi-bolder spacing-1 grey-text text-darken-5">Poster</small>
                                     </div>
@@ -122,7 +122,7 @@
                                 <div class="row">
                                     <div class="col m2">Poster</div>
                                     <div class="col m4">
-                                        <input type="file" name="poster">
+                                        <input type="file" name="gambar">
                                     </div>
                                     <div class="col m6">
                                         <ul class="no-margin">

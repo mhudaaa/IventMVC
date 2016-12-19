@@ -48,8 +48,18 @@
                         </div>
 
                         <div class="item-wrapper">
+                            <div class="row">
+                                <div class="col m12">
+                                    <?php if (isset($_SESSION['pesan']) && isset($_SESSION['type'])) {?>
+                                        <div class="alert alert-<?=$_SESSION['type']?>">
+                                            <?=$_SESSION['pesan']?>
+                                        </div>
+                                    <?php unset($_SESSION['pesan']); unset($_SESSION['type']); } ?>
+                                </div>
+                            </div>
 
                             <?php 
+                                
                                 $noa = 1;
                                 $nob = 1;
                                 foreach($events as $event){ 
@@ -59,7 +69,7 @@
                                 <div class="col m10">
                                     <div class="item white grey-text text-lighten-1">
                                         <div class="hvr-forward event-photo">
-                                            <img src="<?=base_url?>assets/img/<?=$event->poster?>.jpg">
+                                            <img src="<?=base_url?>upload/<?=$event->poster?>">
                                         </div>
                                         <div class="action">
                                             <a class="dropdown-button" href="" data-activates='dropdown-action-<?=$noa++?>'><img src="<?=base_url?>assets/dashboard/img/action.png"></a>

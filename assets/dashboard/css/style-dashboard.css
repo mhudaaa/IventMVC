@@ -518,6 +518,13 @@ hr.title{
 	font-size: 13px;
 	letter-spacing: .2px;
 }
+.alert.alert-danger{
+	background-color: rgba(231, 76, 60, .7);
+	border: 1px solid rgba(231, 76, 60, .9);
+	color: #fff;
+	font-size: 13px;
+	letter-spacing: .2px;
+}
 
 #table-peserta_filter label:after{
 	content: ""!important

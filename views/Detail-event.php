@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	error_reporting(0);
 ?>
 <!DOCTYPE html>
 <html>
@@ -82,7 +82,7 @@
 						<?php } else { ?>
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="<?=base_url?>index.php/home/login"><span class="lnr lnr-calendar-full"></span> Buat Event</a></li>
-							<li class="open-login"><a href="#"><span class="lnr lnr-lock"></span> Masuk</a></li>
+							<li><a href="<?=base_url?>index.php/home/login"><span class="lnr lnr-lock"></span> Masuk</a></li>
 							<li><a href="<?=base_url?>index.php/home/daftar"><span class="lnr lnr-plus-circle"></span> Daftar</a></li>
 						</ul>
 						<?php } ?>
@@ -116,7 +116,7 @@
 						<img src="<?=base_url?>assets/img/event-line.png">
 						<div class="seat text-uppercase text-center">
 							<small>sisa</small><br>
-							<div class="number lato">42</div>
+							<div class="number lato"><?php echo $detailEvent->jml_peserta - $detailEvent->peserta->count() ?></div>
 							<small>tiket</small><br>
 						</div>
 					</div>
@@ -137,6 +137,21 @@
 					</div>
 					<!-- End event info -->
 
+					<?php if(isset($_SESSION['pesansukses'])) { ?>
+					<div class="alert alert-success">
+						<?=$_SESSION['pesansukses']?>
+					</div>
+					<?php 
+					unset($_SESSION['pesansukses']);
+					} else { ?>
+
+					<?php if($cekdaftar->count() > 0){ ?>
+					<div class="alert alert-info">
+						Anda sudah mendaftar di event ini.
+					</div>
+					<?php } } ?>
+
+
 					<!-- Event text -->
 					<p><?=$detailEvent->deskripsi?></p>
 
@@ -149,9 +164,15 @@
 							<span class="text-tosca lato semi-bolder">Rp <?=number_format("$detailEvent->htm","0",",",".") ?></span>
 						</div>
 				
+						<?php if($cekdaftar->count() > 0){ ?>
+						<div class="title title-3 text-center bg-blue hvr-shrink">
+							<button><span class="lato semi-bolder"><i class="lnr lnr-printer"></i> Cetak bukti</span></button>
+						</div>
+						<?php } else { ?>
 						<div class="title title-3 text-center bg-tosca hvr-shrink">
 							<button id="daftarBtn"><span class="lato semi-bolder">Daftar sekarang</span></button>
 						</div>
+						<?php } ?>
 
 						<div class="row">
 							<div class="col-sm-8">
@@ -204,7 +225,7 @@
 				?>
 				<div class="col-sm-3 col wow fadeIn" data-wow-delay="<?=$delay+=.3?>s">
 					<div class="event-list hvr-grow">
-						<img class="event-img" src="<?=base_url?>assets/img/<?=$event->poster?>.jpg">
+						<img class="event-img" src="<?=base_url?>upload/<?=$event->poster?>">
 						<h5 class="text-red"><?=$event->nama_event?></h5>
 						<div class="row">
 							<div class="col-sm-6">
@@ -260,17 +281,12 @@
 				    <button type="button" class="close" onclick="Custombox.close();">
 				        <span>&times;</span><span class="sr-only">Close</span>
 				    </button>
-				    <h4 class="title text-red"><b>Daftar Event</b></h4>
-				    <!-- <hr> -->
+				    <h4 class="title text-left text-red"><b>Daftar Event</b> - <small><?=$detailEvent->nama_event?></small></h4>
+				    <br>
 				    <div class="text-left">
-				       <table class="table ">
+				       <table class="table tbl-info">
 				       		<tr>
-				       			<td width="120px"><b><i class="lnr lnr-star icon-left"></i> Nama Event</b></td>
-				       			<td width="10px"> : </td>
-				       			<td colspan="4"><?=$detailEvent->nama_event?></td>
-				       		</tr>
-				       		<tr>
-				       			<td><b><i class="lnr lnr-calendar-full icon-left"></i> Tanggal</b></td>
+				       			<td width="110px"><b><i class="lnr lnr-calendar-full icon-left"></i> Tanggal</b></td>
 				       			<td width="10px"> : </td>
 				       			<td><?=$detailEvent->tgl_event?></td>
 				       			<td width="100px"><b><i class="lnr lnr-clock icon-left"></i> Waktu</b></td>
@@ -287,11 +303,41 @@
 				       			<td><?=$detailEvent->kota?></td>
 				       		</tr>
 				       		<tr>
+				       			<td><b><i class="lnr lnr-phone icon-left"></i> Kontak</b></td>
+				       			<td width="10px"> : </td>
+				       			<td><?=$detailEvent->kontak?></td>
+				       			<td><b><i class="lnr lnr-envelope icon-left"></i> Email</b></td>
+				       			<td width="10px"> : </td>
+				       			<td><?=$detailEvent->email?></td>
+				       		</tr>
+				       		<tr>
+				       			<td><b><i class="lnr lnr-earth icon-left"></i> Website</b></td>
+				       			<td width="10px"> : </td>
+				       			<td><?=$detailEvent->website?></td>
+				       			<td><b><i class="lnr lnr-license icon-left"></i> HTM</b></td>
+				       			<td width="10px"> : </td>
+				       			<td>Rp <?=$detailEvent->htm?>,-</td>
+				       		</tr>
+				       		<tr>
 				       			<td><b><i class="lnr lnr-file-empty icon-left"></i> Deskripsi</b></td>
 				       			<td width="10px"> : </td>
 				       			<td colspan="4"><?=$detailEvent->deskripsi?></td>
 				       		</tr>
 				       </table>
+				       <hr>
+				       <form method="post" action="<?=base_url?>home/prosesDaftarEvent">
+				       		<div class="row">
+				       			<div class="col-sm-9">
+						       		<label class="text-info">
+						       			&nbsp;<input type="checkbox" name="check" required=""> &nbsp; <small>Saya setuju dengan semua syarat dan ketentuan yang berlaku</small>
+						       		</label>
+				       			</div>
+				       			<div class="col-sm-3">
+				       				<input type="hidden" name="event" value="<?=$detailEvent->id_event?>">
+					       			<input type="submit" name="daftarEvent" class="btn btn-success pull-right" value="Daftar">
+				       			</div>
+				       		</div>
+				       </form>
 				    </div>
 				</div>
 			</div>

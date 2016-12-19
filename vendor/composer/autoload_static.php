@@ -29,6 +29,10 @@ class ComposerStaticInit247df2461a07dff217d7fd4d23433e09
             'Illuminate\\Contracts\\' => 21,
             'Illuminate\\Container\\' => 21,
         ),
+        'D' => 
+        array (
+            'Dompdf\\' => 7,
+        ),
         'C' => 
         array (
             'Carbon\\' => 7,
@@ -64,6 +68,10 @@ class ComposerStaticInit247df2461a07dff217d7fd4d23433e09
         array (
             0 => __DIR__ . '/..' . '/illuminate/container',
         ),
+        'Dompdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
+        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
@@ -71,6 +79,20 @@ class ComposerStaticInit247df2461a07dff217d7fd4d23433e09
     );
 
     public static $prefixesPsr0 = array (
+        'S' => 
+        array (
+            'Svg\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/phenx/php-svg-lib/src',
+            ),
+        ),
+        'F' => 
+        array (
+            'FontLib\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/phenx/php-font-lib/src',
+            ),
+        ),
         'D' => 
         array (
             'Doctrine\\Common\\Inflector\\' => 
@@ -80,12 +102,22 @@ class ComposerStaticInit247df2461a07dff217d7fd4d23433e09
         ),
     );
 
+    public static $classMap = array (
+        'Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
+        'HTML5_Data' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Data.php',
+        'HTML5_InputStream' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/InputStream.php',
+        'HTML5_Parser' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Parser.php',
+        'HTML5_Tokenizer' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/Tokenizer.php',
+        'HTML5_TreeBuilder' => __DIR__ . '/..' . '/dompdf/dompdf/lib/html5lib/TreeBuilder.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit247df2461a07dff217d7fd4d23433e09::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit247df2461a07dff217d7fd4d23433e09::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit247df2461a07dff217d7fd4d23433e09::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit247df2461a07dff217d7fd4d23433e09::$classMap;
 
         }, null, ClassLoader::class);
     }

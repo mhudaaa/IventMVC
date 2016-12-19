@@ -4,6 +4,7 @@ namespace app\Controller;
 use app\Core\View;
 use app\Model\User;
 use app\Model\Event;
+use app\Model\Peserta;
 
 class ControllerHome{
 
@@ -23,11 +24,21 @@ class ControllerHome{
 
 	// Menampilkan rincian event
 	public function detailEvent($id_event){
-        $event = Event::find($id_event);
-		$events = Event::orderBy('created_at', 'desc')->offset(0)->limit(4)->get();
+		session_start();
+
+			$id_user = $_SESSION['id'];
+	        $event = Event::find($id_event);
+			$events = Event::orderBy('created_at', 'desc')->offset(0)->limit(4)->get();
+
+			$cekdaftar = Peserta::where([
+			    ['id_event', $id_event],
+			    ['id_user', $id_user]
+			])->get();
+
 		View::render('Detail-event',[
             'detailEvent' => $event,
-            'events' => $events
+            'events' => $events,
+            'cekdaftar' => $cekdaftar
         ]);
     }
 	
@@ -93,7 +104,7 @@ class ControllerHome{
 				}
 			} else{
 				$_SESSION['type'] = "danger";
-				$_SESSION['pesan'] = "Gagal. Email sudah digunakan";
+				$_SESSION['pesan'] = "Gagal. Email sudah terdaftar";
 			}
 		} else{
 			$_SESSION['type'] = "danger";
@@ -101,5 +112,28 @@ class ControllerHome{
 		}
 		
     	header('Location: '.base_url.'home/daftar');
+	}
+
+	// Daftar event
+	function prosesDaftarEvent(){
+		session_start();
+		$event = $_POST['event'];
+		$input = ([
+    		'id_event' => $event,
+    		'id_user' => $_SESSION['id'],
+    		'status' => '1'
+    	]);
+
+		// Cek submit
+		if (isset($_POST['daftarEvent'])) {
+	    	Peserta::create($input);
+			$_SESSION['pesansukses'] = "Sukses. Daftar event berhasil";
+		} else{
+			$_SESSION['type'] = "danger";
+			$_SESSION['pesan'] = "Gagal. Akses ilegal";
+			// echo "gagal";
+		}
+		
+    	header('Location: '.base_url.'home/detailEvent/'.$event);
 	}
 }

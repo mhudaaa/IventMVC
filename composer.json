@@ -5,6 +5,7 @@
     }
   },
   "require": {
-    "illuminate/database": "^5.1"
+    "illuminate/database": "^5.1",
+    "dompdf/dompdf": "^0.7.0"
   }
 }

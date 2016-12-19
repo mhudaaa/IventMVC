@@ -31,7 +31,7 @@
                             <div class="row">
                                 <div class="col s5">
                                     <div class="poster">
-                                        <img src="<?=base_url?>assets/img/poster2.jpg">
+                                        <img src="<?=base_url?>upload/<?=$detailEvent->poster?>">
                                     </div>
                                 </div>
                                 <div class="col s7 grey-text text-darken-5">

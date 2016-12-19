@@ -63,7 +63,7 @@
 						
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="<?=base_url?>index.php/home/login"><span class="lnr lnr-calendar-full"></span> Buat Event</a></li>
-							<li class="open-login"><a href="#"><span class="lnr lnr-lock"></span> Masuk</a></li>
+							<li><a href="<?=base_url?>home/login"><span class="lnr lnr-lock"></span> Masuk</a></li>
 						</ul>
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->

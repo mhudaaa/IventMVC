@@ -53,7 +53,7 @@
                                         </tbody>
                                 </table>
                                 <br>
-                                <a href="<?=base_url?>dashboard/detailEvent"><button class="btn grey z-depth-0">Kembali</button></a>
+                                <a href="<?=base_url?>dashboard/detailEvent/<?=$event->id_event?>"><button class="btn grey z-depth-0">Kembali</button></a>
                             </div>
                         </div>
                     </div>

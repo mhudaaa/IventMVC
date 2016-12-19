@@ -3,6 +3,7 @@
 
 body{
 	font-family: 'Raleway';
+	overflow-x: hidden;
 }
 img{
 	max-width: 100%;
@@ -58,7 +59,10 @@ h3{
 	background-color: #1bbc9b!important;
 	color: #fff!important;
 }
-
+.bg-blue{
+	background-color: #A5E5FF!important;
+	color: #2980b9!important
+}
 
 
 /*Button*/
@@ -675,12 +679,17 @@ body.daftar{
 .icon-sm{
 	font-size: 10px;
 }
+.modal-demo{
+	display: none;
+}
 .modal-body{
 	background-color: #fff;
 	border-radius: 8px;
 	box-shadow: 0 0 25px rgba(0,0,0,.03);
 }
-
+.tbl-info tr>td{
+	border-top-color: #f1f1f1!important;
+}
 /*Placeholder*/
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: rgba(0,0,0,.3);
