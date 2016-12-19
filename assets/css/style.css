@@ -299,7 +299,7 @@ button{
 	height: auto;
 	background-color: rgba(255,255,255,.9);
 	position: absolute;
-	top: 70px;
+	top: 75px;
 	right: 290px;
 	z-index: 1000;
 	padding: 15px 20px;
@@ -323,6 +323,7 @@ button{
 	margin-bottom: 5px;
 	padding: 10px;
 	background-color: #f0f0f0;
+	color: #999!important;
 	font-size: 12px;
 	font-weight: 500;
 	width: 100%;
@@ -334,7 +335,7 @@ button{
 .login-form input[type=submit]{
 	background-color: #89dca4;
 	margin-top: 5px;
-	color: #fff;
+	color: #fff!important;
 	border:0; 
 	margin-bottom: 0;
 }
@@ -350,6 +351,38 @@ button{
   	border-left: 7px solid transparent;
   	border-right: 7px solid transparent;  
   	border-bottom: 7px solid rgba(255,255,255,.9);
+}
+.account-panel{
+	width: 170px;
+	height: auto;
+	background-color: rgba(255,255,255,.9);
+	position: absolute;
+	top: 75px;
+	right: 220px;
+	z-index: 1000;
+	padding: 15px 20px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	color: #bbb;
+	display: none;
+}
+.account-panel li{
+	list-style: none;
+	margin-left: -35px;
+	margin-bottom: 10px;
+}
+.account-panel li.separator{
+	width: 100%;
+	background: rgba(0,0,0,.06);
+	height: 1px;
+	margin: 15px -35px;
+}
+.account-panel a{
+	color: #bbb!important
+}
+.account-panel a:hover{
+	color: #ed7063!important
 }
 
 /*Daftar*/
@@ -630,6 +663,22 @@ body.daftar{
 .close, a.close{
 	font-size: 16px!important;
 	color: #000!important;
+}
+
+.icon-right{
+	margin-left: 5px;
+}
+.icon-left{
+	width: 10px;
+	margin-right: 5px;
+}
+.icon-sm{
+	font-size: 10px;
+}
+.modal-body{
+	background-color: #fff;
+	border-radius: 8px;
+	box-shadow: 0 0 25px rgba(0,0,0,.03);
 }
 
 /*Placeholder*/

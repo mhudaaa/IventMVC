@@ -21,7 +21,7 @@
                         <div class="row grey-text text-lighten-1">
                             <div class="col m6">
                                 <h5 class="title bolder text-red">Daftar Peserta</h5>
-                                <span class="bold">Seminar Internet Marketing 2016</span>
+                                <span class="bold"><?=$event->nama_event?></span>
                             </div>
                             <div class="col m6 right-align">
                                 <h4><i class="lnr lnr-printer"></i></h4>
@@ -30,35 +30,26 @@
 
                         <div class="row">
                             <div class="col m12">
-                                <table class="striped highlight">
+                                <table id="table-peserta" class="striped highlight">
                                     <thead>
                                         <tr>
-                                              <th data-field="id">No</th>
-                                              <th data-field="id">Nama</th>
-                                              <th data-field="name">Email</th>
-                                              <th data-field="price">No. Telp</th>
+                                              <th data-field="no" width="6px">No</th>
+                                              <th data-field="nama">Nama</th>
+                                              <th data-field="email">Email</th>
+                                              <th data-field="telp">No. Telp</th>
+                                              <th data-field="daftar">Daftar</th>
                                           </tr>
                                         </thead>
-
                                         <tbody>
-                                          <tr>
-                                            <td>1</td>
-                                            <td>Alvin</td>
-                                            <td>alvin@gmail.com</td>
-                                            <td>0892-9920-0292</td>
-                                          </tr>
-                                          <tr>
-                                            <td>2</td>
-                                            <td>Alan</td>
-                                            <td>alan@gmail.com</td>
-                                            <td>0820-9293-1293</td>
-                                          </tr>
-                                          <tr>
-                                            <td>3</td>
-                                            <td>Jonathan</td>
-                                            <td>lo@jon.com</td>
-                                            <td>0380-2323-4994</td>
-                                          </tr>
+                                            <?php $no=1; foreach($pesertas as $peserta){ ?>
+                                            <tr>
+                                                <td class="center-align"><?=$no++?></td>
+                                                <td><?=$peserta->user->nama?></td>
+                                                <td><?=$peserta->user->email?></td>
+                                                <td><?=$peserta->user->telp?></td>
+                                                <td><?=date('d M Y', strtotime($peserta->created_at))?></td>
+                                            </tr>
+                                            <?php } ?>
                                         </tbody>
                                 </table>
                                 <br>

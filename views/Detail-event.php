@@ -1,7 +1,10 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Detail - Ivent</title>
+	<title><?=$detailEvent->nama_event?> - Ivent</title>
 
 	<!-- Meta tags -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -12,6 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="<?=base_url?>assets/css/linearicons.css">
 	<link rel="stylesheet" type="text/css" href="<?=base_url?>assets/css/hover-min.css">
 	<link rel="stylesheet" type="text/css" href="<?=base_url?>assets/css/animate.css">
+	<link rel="stylesheet" type="text/css" href="<?=base_url?>assets/css/custombox.css">
 </head>
 <body class="detail">
 
@@ -36,6 +40,21 @@
 			</div>
 		</form>
 	</div>
+	<!-- End login -->
+
+	<!-- Account panel -->
+	<div class="account-panel">
+		<div class="rel">
+			<div class="arrow-up"></div>
+		</div>
+		<ul>
+			<li><a href="<?=base_url?>dashboard/profil"><i class="lnr lnr-user"></i> Profile</a></li>
+			<li><a href="<?=base_url?>dashboard"><i class="lnr lnr-home"></i> Dashboard</a></li>
+			<li class="separator"></li>
+			<li><a href="<?=base_url?>auth/logout"><i class="lnr lnr-power-switch"></i>Logout</a></li>
+		</ul>
+	</div>
+	<!-- End account panel -->
 
 	<!-- Begin Header -->
 	<section id="header">
@@ -55,11 +74,19 @@
 					</div><!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						
+						<?php if (isset($_SESSION['email']) && isset($_SESSION['id'])) { ?>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="daftar.html"><span class="lnr lnr-calendar-full"></span> Buat Event</a></li>
-							<li class="open-login"><a href="#"><span class="lnr lnr-lock"></span> Masuk</a></li>
-							<li><a href="<?=base_url?>home/daftar"><span class="lnr lnr-plus-circle"></span> Daftar</a></li>
+							<li><a href="<?=base_url?>dashboard/tambahEvent"><span class="lnr lnr-calendar-full"></span> Buat Event</a></li>
+							<li class="open-account"><a href="#"><span class="lnr lnr-user"></span> <?=$_SESSION['nama']?> <small><i class="lnr lnr-chevron-down icon-right icon-sm"></i></small></a></li>
 						</ul>
+						<?php } else { ?>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="<?=base_url?>index.php/home/login"><span class="lnr lnr-calendar-full"></span> Buat Event</a></li>
+							<li class="open-login"><a href="#"><span class="lnr lnr-lock"></span> Masuk</a></li>
+							<li><a href="<?=base_url?>index.php/home/daftar"><span class="lnr lnr-plus-circle"></span> Daftar</a></li>
+						</ul>
+						<?php } ?>
+
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->
 
@@ -121,11 +148,11 @@
 						<div class="title title-2 text-center">
 							<span class="text-tosca lato semi-bolder">Rp <?=number_format("$detailEvent->htm","0",",",".") ?></span>
 						</div>
-						<a href="">
-							<div class="title title-3 text-center bg-tosca hvr-shrink">
-								<button><span class="lato semi-bolder">Daftar sekarang</span></button>
-							</div>
-						</a>
+				
+						<div class="title title-3 text-center bg-tosca hvr-shrink">
+							<button id="daftarBtn"><span class="lato semi-bolder">Daftar sekarang</span></button>
+						</div>
+
 						<div class="row">
 							<div class="col-sm-8">
 								<table class="rincian">
@@ -226,13 +253,71 @@
 	</section>
 	<!-- End Footer -->
 
+	<div id="daftarForm" class="modal-demo">
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+				<div class="modal-body">
+				    <button type="button" class="close" onclick="Custombox.close();">
+				        <span>&times;</span><span class="sr-only">Close</span>
+				    </button>
+				    <h4 class="title text-red"><b>Daftar Event</b></h4>
+				    <!-- <hr> -->
+				    <div class="text-left">
+				       <table class="table ">
+				       		<tr>
+				       			<td width="120px"><b><i class="lnr lnr-star icon-left"></i> Nama Event</b></td>
+				       			<td width="10px"> : </td>
+				       			<td colspan="4"><?=$detailEvent->nama_event?></td>
+				       		</tr>
+				       		<tr>
+				       			<td><b><i class="lnr lnr-calendar-full icon-left"></i> Tanggal</b></td>
+				       			<td width="10px"> : </td>
+				       			<td><?=$detailEvent->tgl_event?></td>
+				       			<td width="100px"><b><i class="lnr lnr-clock icon-left"></i> Waktu</b></td>
+				       			<td width="10px"> : </td>
+				       			<td><?=date('H:i', strtotime($detailEvent->waktu_mulai));?> - <?=date('H:i', strtotime($detailEvent->waktu_selesai));?>
+				       			</td>
+				       		</tr>
+				       		<tr>
+				       			<td><b><i class="lnr lnr-map-marker icon-left"></i> Tempat</b></td>
+				       			<td width="10px"> : </td>
+				       			<td><?=$detailEvent->tempat?></td>
+				       			<td><b><i class="lnr lnr-apartment icon-left"></i> Kota</b></td>
+				       			<td width="10px"> : </td>
+				       			<td><?=$detailEvent->kota?></td>
+				       		</tr>
+				       		<tr>
+				       			<td><b><i class="lnr lnr-file-empty icon-left"></i> Deskripsi</b></td>
+				       			<td width="10px"> : </td>
+				       			<td colspan="4"><?=$detailEvent->deskripsi?></td>
+				       		</tr>
+				       </table>
+				    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- Javascript -->
 	<script type="text/javascript" src="<?=base_url?>assets/js/jquery-1.12.4.min.js"></script>
 	<script type="text/javascript" src="<?=base_url?>assets/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?=base_url?>assets/js/wow.min.js"></script>
+	<script type="text/javascript" src="<?=base_url?>assets/js/custombox.js"></script>
 	<script type="text/javascript" src="<?=base_url?>assets/js/script.js"></script>
 	<script>
     	new WOW().init();
+
+    	$(function() {
+	        $('#daftarBtn').on('click', function( e ) {
+	            Custombox.open({
+	                target: '#daftarForm',
+	                effect: 'sign',
+	                overlayColor: "#eee",
+	                overlaySpeed: 100
+	            });
+	            e.preventDefault();
+	        });
+	    });
     </script>
 
 

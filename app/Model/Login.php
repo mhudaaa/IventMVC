@@ -13,6 +13,7 @@ class Login{
         if(isset($user->email)){
             if ($password == $user->password) {
                 $_SESSION['email'] = $user->email;
+                $_SESSION['nama'] = $user->nama;
                 $_SESSION['id'] = $user->id_user;
                 return true;
             } else{

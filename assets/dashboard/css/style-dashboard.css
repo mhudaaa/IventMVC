@@ -518,3 +518,7 @@ hr.title{
 	font-size: 13px;
 	letter-spacing: .2px;
 }
+
+#table-peserta_filter label:after{
+	content: ""!important
+}

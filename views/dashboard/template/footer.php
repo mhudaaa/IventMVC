@@ -1,6 +1,7 @@
         <!--Javascript-->
         <script type="text/javascript" src="<?=base_url?>assets/js/jquery-1.12.4.min.js"></script>
         <script type="text/javascript" src="<?=base_url?>assets/dashboard/js/materialize.min.js"></script>
+        <script type="text/javascript" src="<?=base_url?>assets/dashboard/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function(){
                 $('.modal').modal({
@@ -17,6 +18,8 @@
                       complete: function() {} // Callback for Modal close
                     }
                 );
+
+                $('#table-peserta').DataTable();
 
                 $('.alert').delay(3200).fadeOut(300);
               });

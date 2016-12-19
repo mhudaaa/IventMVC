@@ -5,6 +5,7 @@ namespace app\Controller;
 use app\Core\View;
 use app\Model\User;
 use app\Model\Event;
+use app\Model\Peserta;
 
 class ControllerDashboard{
 
@@ -19,7 +20,8 @@ class ControllerDashboard{
 	function index(){
 		$id = $_SESSION['id'];
 		$user = User::findOrFail($id);
-		$event = Event::orderBy('created_at', 'desc')->get();
+		$event = Event::where('event_organizer', $id)->orderBy('created_at', 'desc')->get();
+
 		$data = [
 			'user' => $user,
 			'events' => $event
@@ -30,12 +32,15 @@ class ControllerDashboard{
 	function event(){
 		$id = $_SESSION['id'];
 		$user = User::findOrFail($id);
+		$event = Peserta::where('id_user', $id)->orderBy('created_at', 'desc')->get();
 		$data = [
-			'user' => $user
+			'user' => $user,
+			'events' => $event
 		];
 		View::render('dashboard/event', $data);
 	}
 
+	
 	function tambahEvent(){
 		$id = $_SESSION['id'];
 		$user = User::findOrFail($id);
@@ -46,19 +51,40 @@ class ControllerDashboard{
 		
 	}
 
-	function detailEventUser(){
+	function detailEvent($id_event){
 		$id = $_SESSION['id'];
 		$user = User::findOrFail($id);
+
+		$event = Event::find($id_event);
 		$data = [
+			'detailEvent' => $event,
+			'user' => $user
+		];
+		View::render('dashboard/detail-event', $data);
+	}
+
+	function detailEventPeserta($id_event){
+		$id = $_SESSION['id'];
+		$user = User::findOrFail($id);
+
+		$event = Event::find($id_event);
+		$data = [
+			'detailEvent' => $event,
 			'user' => $user
 		];
 		View::render('dashboard/detail-event-user', $data);
 	}
 
-	function peserta(){
+	function peserta($id_event){
 		$id = $_SESSION['id'];
 		$user = User::findOrFail($id);
+
+		$event = Event::find($id_event);
+		$peserta = Peserta::where('id_event', $id_event)->get();
+				
 		$data = [
+			'event' => $event,
+			'pesertas' => $peserta,
 			'user' => $user
 		];
 		View::render('dashboard/peserta', $data);

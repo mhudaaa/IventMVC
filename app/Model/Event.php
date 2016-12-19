@@ -10,4 +10,7 @@ class Event extends Model{
 
 	protected $fillable = ['event_organizer', 'nama_event', 'deskripsi', 'waktu_mulai', 'waktu_selesai', 'tempat', 'kota', 'email', 'website','jml_peserta', 'persetujuan_peserta', 'htm', 'tgl_event', 'poster'];
 
+	public function peserta(){
+    	return $this->belongsToMany(User::class, 'tb_peserta','id_event','id_user')->withPivot('status');
+    }
 }

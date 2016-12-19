@@ -40,6 +40,21 @@ session_start();
 			</div>
 		</form>
 	</div>
+	<!-- End login -->
+
+	<!-- Account panel -->
+	<div class="account-panel">
+		<div class="rel">
+			<div class="arrow-up"></div>
+		</div>
+		<ul>
+			<li><a href="<?=base_url?>dashboard/profil"><i class="lnr lnr-user"></i> Profile</a></li>
+			<li><a href="<?=base_url?>dashboard"><i class="lnr lnr-home"></i> Dashboard</a></li>
+			<li class="separator"></li>
+			<li><a href="<?=base_url?>auth/logout"><i class="lnr lnr-power-switch"></i>Logout</a></li>
+		</ul>
+	</div>
+	<!-- End account panel -->
 
 	<!-- Begin Header -->
 	<section id="header">
@@ -59,10 +74,19 @@ session_start();
 					</div><!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						
+						<?php if (isset($_SESSION['email']) && isset($_SESSION['id'])) { ?>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="<?=base_url?>dashboard/tambahEvent"><span class="lnr lnr-calendar-full"></span> Buat Event</a></li>
+							<li class="open-account"><a href="#"><span class="lnr lnr-user"></span> <?=$_SESSION['nama']?> <small><i class="lnr lnr-chevron-down icon-right icon-sm"></i></small></a></li>
+						</ul>
+						<?php } else { ?>
 						<ul class="nav navbar-nav navbar-right">
 							<li><a href="<?=base_url?>index.php/home/login"><span class="lnr lnr-calendar-full"></span> Buat Event</a></li>
 							<li class="open-login"><a href="#"><span class="lnr lnr-lock"></span> Masuk</a></li>
+							<li><a href="<?=base_url?>index.php/home/daftar"><span class="lnr lnr-plus-circle"></span> Daftar</a></li>
 						</ul>
+						<?php } ?>
+
 					</div><!-- /.navbar-collapse -->
 				</div><!-- /.container-fluid -->
 
@@ -82,21 +106,22 @@ session_start();
 	<sections>
 		<div id="wrapper">
 			<div class="row">
-				<div class="col-sm-3 col">
+				<?php foreach($events as $event) {?>
+				<div class="col-sm-3">
 					<div class="event-list hvr-float-shadow">
-						<img class="event-img" src="<?=base_url?>assets/img/poster1.jpg">
-						<h5 class="text-red">Lorem ipsum dolor sit</h5>
+						<img class="event-img" src="<?=base_url?>assets/img/<?=$event->poster?>.jpg">
+						<h5 class="text-red"><?=$event->nama_event?></h5>
 						<div class="row">
 							<div class="col-sm-6">
-								<span class="event-info">30-6-2015</span>
+								<span class="event-info"><?=$event->tgl_event?></span>
 							</div>
 							<div class="col-sm-6">
-								<span class="event-info text-green text-uppercase pull-right">Gratis</span>
+								<span class="event-info text-green text-uppercase pull-right">Rp <?=$event->htm?></span>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-6">
-								<a href="detail-event.html"><button class="btn btn-red btn-small text-uppercase">detail</button></a>
+								<a href="<?=base_url?>home/detailEvent/<?=$event->id_event?>"><button class="btn btn-red btn-small text-uppercase">detail</button></a>
 							</div>
 							<div class="col-sm-6 text-right bold plus">
 								<a href="daftar.html"><h3><i class="hvr-buzz-out lnr lnr-plus-circle"></i></h3></a>
@@ -104,72 +129,7 @@ session_start();
 						</div>
 					</div>
 				</div>
-				<div class="col col-sm-3">
-					<div class="event-list hvr-float-shadow">
-						<img class="event-img" src="<?=base_url?>assets/img/poster2.jpg">
-						<h5 class="text-red">Summer Sounds Festival</h5>
-						<div class="row">
-							<div class="col-sm-6">
-								<span class="event-info">30-6-2016</span>
-							</div>
-							<div class="col-sm-6">
-								<span class="event-info text-green text-uppercase pull-right">Rp 50.000</span>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6">
-								<a href="detail-event.html"><button class="btn btn-red btn-small text-uppercase">detail</button></a>
-							</div>
-							<div class="col-sm-6 text-right bold plus">
-								<a href="daftar.html"><h3><i class="hvr-buzz-out lnr lnr-plus-circle"></i></h3></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col col-sm-3">
-					<div class="event-list hvr-float-shadow">
-						<img class="event-img" src="<?=base_url?>assets/img/poster3.jpg">
-						<h5 class="text-red">British Academy Film Awards</h5>
-						<div class="row">
-							<div class="col-sm-6">
-								<span class="event-info">30-6-2015</span>
-							</div>
-							<div class="col-sm-6">
-								<span class="event-info text-green text-uppercase pull-right">Gratis</span>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6">
-								<a href="detail-event.html"><button class="btn btn-red btn-small text-uppercase">detail</button></a>
-							</div>
-							<div class="col-sm-6 text-right bold plus">
-								<a href="daftar.html"><h3><i class="hvr-buzz-out lnr lnr-plus-circle"></i></h3></a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col col-sm-3">
-					<div class="event-list hvr-float-shadow">
-						<img class="event-img" src="<?=base_url?>assets/img/poster4.jpg">
-						<h5 class="text-red">Qontinent - The Last Resort</h5>
-						<div class="row">
-							<div class="col-sm-6">
-								<span class="event-info">30-6-2015</span>
-							</div>
-							<div class="col-sm-6">
-								<span class="event-info text-green text-uppercase pull-right">RP. 30.000</span>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-6">
-								<a href="detail-event.html"><button class="btn btn-red btn-small text-uppercase">detail</button></a>
-							</div>
-							<div class="col-sm-6 text-right bold plus">
-								<a href="daftar.html"><h3><i class="hvr-buzz-out lnr lnr-plus-circle"></i></h3></a>
-							</div>
-						</div>
-					</div>
-				</div>
+				<?php } ?>
 			</div>
 		</div>
 	</section>

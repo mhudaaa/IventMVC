@@ -34,12 +34,16 @@
                         <br>
 
                         <div class="item-wrapper">
+
+                            <?php 
+                                foreach($events as $event){ 
+                            ?>
                             <!-- Item -->
                             <div class="row">
                                 <div class="col m10">
                                     <div class="item white grey-text text-lighten-1">
                                         <div class="hvr-forward event-photo">
-                                            <img src="<?=base_url?>assets/img/poster2.jpg">
+                                            <img src="<?=base_url?>assets/img/<?=$event->event->poster?>.jpg">
                                         </div>
                                         <div class="action">
                                             <a class="" href="#share" data-activates=''><i class="lnr lnr-thumbs-up"></i></a>
@@ -47,15 +51,15 @@
                                         <div class="row">
                                             <div class="col m10 offset-m2 event-title">
                                                 <div class="col m12">
-                                                    <h6 class="truncate semi-bold">Summer Sound Festival</h6>
+                                                    <h6 class="truncate semi-bold"><?=$event->event->nama_event?></h6>
                                                 </div>
                                                 
                                                 <div class="uppercase lato spacing-1 semi-bold">
                                                     <div class="col m5">
-                                                        <small><i class="lnr lnr-calendar-full"></i> 30 Oktober 2016</small>
+                                                        <small><i class="lnr lnr-calendar-full"></i> <?=$event->event->tgl_event?></small>
                                                     </div>
                                                     <div class="col m5">
-                                                        <small><i class="lnr lnr-clock"></i> 07:00 - 13:00</small>
+                                                        <small><i class="lnr lnr-clock"></i> <?=date('H:i', strtotime($event->event->waktu_mulai));?> - <?=date('H:i', strtotime($event->event->waktu_selesai));?></small>
                                                     </div>
                                                 </div>
                                             </div>
@@ -67,14 +71,17 @@
                                 </div>
                                 <div class="col m2">
                                     <br>
-                                    <a href="<?=base_url?>dashboard/detailEventPeserta"><button class="btn-border btn-small btn-block">Rincian</button></a><br>
+                                    <a href="<?=base_url?>dashboard/detailEventPeserta/<?=$event->event->id_event?>"><button class="btn-border btn-small btn-block">Rincian</button></a><br>
                                     <a href=""><button class="btn-border btn-small btn-block">Tiket</button></a>
                                 </div>
                             </div>
                             <!-- End item -->
 
+                            <?php
+                                }
+                            ?>
                             <!-- Item -->
-                            <div class="row">
+                           <!--  <div class="row">
                                 <div class="col m10">
                                     <div class="item white grey-text text-lighten-1">
                                         <div class="hvr-forward event-photo">
@@ -108,7 +115,7 @@
                                     <a href="<?=base_url?>dashboard/detailEventPeserta"><button class="btn-border btn-small btn-block">Rincian</button></a><br>
                                     <a href=""><button class="btn-border btn-small btn-block">Tiket</button></a>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- End item -->
                         </div>
                         

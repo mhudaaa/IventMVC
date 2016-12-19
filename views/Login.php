@@ -1,5 +1,8 @@
 <?php 
 	session_start();
+	if (isset($_SESSION['email']) && isset($_SESSION['id'])) {
+		header('Location: '.base_url.'/dashboard');
+	}
 ?>
 <!DOCTYPE html>
 <html>

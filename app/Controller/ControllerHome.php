@@ -38,7 +38,11 @@ class ControllerHome{
 
 	// Menampilkan halaman event
 	function event(){
-		View::render('Event');
+		$event = Event::orderBy('created_at', 'desc')->offset(0)->limit(4)->get();
+		$data = [
+			'events' => $event
+		];
+		View::render('Event', $data);
 	}
 
 	// Menampilkan halaman login
